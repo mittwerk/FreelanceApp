@@ -28,10 +28,12 @@ import java.time.Duration
 
 object SymbioNetwork {
     private const val PROXY_HOST = "127.0.0.1"
-    private const val PROXY_PORT = 9050
+    private const val PROXY_PORT = 4444
 
+    //    private const val BASE_URL =
+//        "http://2tpgl3gr4bba5o2y7g4alm5av6q34ilmaw5g3wywa3xy5gemnmmkycid.onion:9992"
     private const val BASE_URL =
-        "http://2tpgl3gr4bba5o2y7g4alm5av6q34ilmaw5g3wywa3xy5gemnmmkycid.onion:9992"
+        "http://freel5toedh7cf4com5yc3hgyqgivgut4flfltoj3sdrxqwsr4xq.b32.i2p:9999"
 
     private val json =
         Json {
@@ -41,9 +43,10 @@ object SymbioNetwork {
     private val okHttpClient =
         OkHttpClient
             .Builder()
-            .proxy(Proxy(Proxy.Type.SOCKS, InetSocketAddress(PROXY_HOST, PROXY_PORT)))
-            .connectTimeout(Duration.ofSeconds(30))
-            .readTimeout(Duration.ofSeconds(30))
+            .proxy(Proxy(Proxy.Type.HTTP, InetSocketAddress(PROXY_HOST, PROXY_PORT)))
+            .connectTimeout(Duration.ofMinutes(2))
+            .readTimeout(Duration.ofMinutes(2))
+            .writeTimeout(Duration.ofMinutes(2))
             .build()
 
     val retrofit: Retrofit =

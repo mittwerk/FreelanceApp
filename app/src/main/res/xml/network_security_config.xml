@@ -18,6 +18,10 @@
         <domain includeSubdomains="true">
             2tpgl3gr4bba5o2y7g4alm5av6q34ilmaw5g3wywa3xy5gemnmmkycid.onion
         </domain>
+        <domain includeSubdomains="true">
+            freel5toedh7cf4com5yc3hgyqgivgut4flfltoj3sdrxqwsr4xq.b32.i2p
+        </domain>
         <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">freelance.i2p</domain>
     </domain-config>
 </network-security-config>

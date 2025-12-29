@@ -23,8 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        TorManager.startTor(this)
-
+        I2PManager.startI2P(this)
         setContent {
             AppTheme {
                 Surface(
@@ -42,16 +41,14 @@ class MainActivity : ComponentActivity() {
                                 lifecycleScope.launch {
                                     try {
                                         val response = api.sayHello()
-
                                         Toast
                                             .makeText(
                                                 this@MainActivity,
-                                                "API Response: ${response.message}",
+                                                "I2P Response: ${response.message}",
                                                 Toast.LENGTH_LONG,
                                             ).show()
                                     } catch (e: Exception) {
                                         Log.e("API", "Failed: ${e.message}")
-
                                         Toast
                                             .makeText(
                                                 this@MainActivity,
@@ -61,12 +58,13 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                             },
+                            enabled = I2PManager.isI2PReady,
                             modifier = Modifier.align(Alignment.Center),
                         ) {
-                            if (TorManager.isTorReady) {
-                                Text("Test .onion API")
+                            if (I2PManager.isI2PReady) {
+                                Text("Test .i2p API")
                             } else {
-                                Text("Tor: Bootstrapping...")
+                                Text("I2P: Building Tunnels...")
                             }
                         }
                     }
